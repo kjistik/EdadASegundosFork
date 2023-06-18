@@ -1,8 +1,9 @@
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Scanner;
 
-public class App {
+public class AppSwitch {
 
     static int getData(int prop) {
         int year, month, day;
@@ -11,33 +12,40 @@ public class App {
         Scanner sc = new Scanner(System.in);
         do {
             try {
-                if (prop == 1) {
-                    System.out.print("Escriba su año de nacimiento (YYYY): ");
-                    year1 = sc.nextLine();
-                    year = Integer.parseInt(year1);
-                    if (year1.length() != 4) {
-                        throw new NumberFormatException();
+                switch (prop) {
+                    case 1: {
+                        System.out.print("Escriba su año de nacimiento (YYYY): ");
+                        year1 = sc.nextLine();
+                        year = Integer.parseInt(year1);
+                        if (year1.length() != 4) {
+                            throw new NumberFormatException();
+                        }
+                        valid = true;
+                        return year;
                     }
-                    valid = true;
-                    return year;
-                } else if (prop == 2) {
-                    System.out.print("Escriba su mes de nacimiento (MM): ");
-                    month1 = sc.nextLine();
-                    month = Integer.parseInt(month1);
-                    if (month1.length() != 2 || month < 1 || month > 12) {
-                        throw new NumberFormatException();
+                    case 2: {
+                        System.out.print("Escriba su mes de nacimiento (MM): ");
+                        month1 = sc.nextLine();
+                        month = Integer.parseInt(month1);
+                        if (month1.length() != 2 || month < 1 || month > 12) {
+                            throw new NumberFormatException();
+                        }
+                        valid = true;
+                        return month;
                     }
-                    valid = true;
-                    return month;
-                } else if (prop == 3) {
-                    System.out.print("Escriba su día de nacimiento (DD): ");
-                    day1 = sc.nextLine();
-                    day = Integer.parseInt(day1);
-                    if (day1.length() != 2 || day < 1 || day > 31) {
-                        throw new NumberFormatException();
+                    case 3: {
+                        System.out.print("Escriba su día de nacimiento (DD): ");
+                        day1 = sc.nextLine();
+                        day = Integer.parseInt(day1);
+                        if (day1.length() != 2 || day < 1 || day > 31) {
+                            throw new NumberFormatException();
+                        }
+                        valid = true;
+                        return day;
                     }
-                    valid = true;
-                    return day;
+                    default: {
+                        return -1;
+                    }
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Entrada inválida. Debe ingresar un número entero de 4 dígitos.");
